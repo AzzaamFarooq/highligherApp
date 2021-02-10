@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110962916-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110962916-2');
+  </script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Digi-Lighter</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Custom fonts for this template -->
+    <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/agency.css') }}" rel="stylesheet">
+    
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Digi-Lighter (Beta)</a>
+        <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <!-- <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container text-center">
+        <div class="intro-text">
+          <div class="intro-lead-in">Digitize your Highlights.</div>
+          <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload') }}">
+          <div class="row">
+          <div class="form-group col-lg-12">
+              <input style="width:100% !important" type="file" accept='image/*' class="form-control" id="images" name="images" onchange="" multiple>
+            </div>
+            <div class="col-lg-12 form-group">
+                    <input class="form-control" name="title" id="title" type="text" placeholder="NoteTitle (optional)">
+              </div>
+            <div class="form-group col-lg-12">
+              <div class="input-group">
+                <select name="option" class="form-control" id="option">
+                <option value="highlighted_only" SELECTED>Highlighted Only</option>
+                <option value="all">All Text</option>
+              </select>
+            </div>
+            </div>
+                <!-- 
+                <label class="col-sm-5 custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                    <input type="checkbox" name="highlighted_check" class="custom-control-input" value="checked" checked>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Highlighted Only</span>
+                  </label> -->
+                  <!-- <input type="file" accept='image/*' class="form-control" id="images" name="images" onchange="" multiple/> -->
+
+              </div>
+
+            <div class="form-group row justify-content-start">
+              <div class="col-lg-12">
+                <div class="btn-group">
+                  <button id="submitbtn" name="btn" value="submitbtn" class="btn btn-primary text-uppercase" type="submit">Digitize</button>
+                  <button id="submitbtnluck" name="btn" value="lucky" class="btn btn-primary text-uppercase" type="submit">Create everNote</button>
+                    <!-- <input type="submit" class="btn btn-primary" name='submitbtn' value="Digitize it."/> -->
+                </div>
+              </div>
+            </div>
+          </form>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <h4><a href="https://medium.com/@shahamfarooq/digi-lighter-digitize-your-highlights-5fa905d0b4f4">Read about Digilighter</a></h4>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      
+      
+    </header>
+
+<!-- 
+    {% if note_msg %}
+    <section id="services">
+
+      {% if note_msg %}
+          <div class="container text-center">
+              <div class="row">
+                <div class="col-lg-12 text-center">
+                {{ note_msg }}
+                </div>
+              </div>
+        </div>
+      {% endif %}
+    <div class="container text-center">
+               <div class="row">
+                <div class="col-lg-12 text-center">
+                  <h3 class="section-heading text-uppercase">Contoured Image</h3>
+                </div>
+              </div>
+            <div class="row">
+               <div class='col-md-5'>
+               <img class='img-responsive' style="width: 100%; height: auto; border:1px; border-color:#fed136;" src="
+               {{ url_for('static', filename=file_path) }}">
+               </div>
+                 <div class="col-lg-7 text-center">
+                {{ note_msg }}
+                </div>
+             </div>
+               
+
+        </div>
+        
+    </section>
+    {% endif %}
+
+ -->
+     {% if file_path %}
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Create an everNote</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class='col-lg-5'>
+            <!-- <a href="{{ url_for('static', filename=file_path) }}">
+               <img class='img-responsive' style="width: 100%; height: auto; border:2px; border-color:white;"  
+               src="{{ url_for('static', filename=file_path) }}"></a>
+               <a href="{{ url_for('static', filename=file_path) }}">
+               <img class='img-responsive' style="width: 100%; height: auto; border:2px; border-color:white;"  
+               src="{{ url_for('static', filename=file_path) }}"></a> -->
+               <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+               
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height:100% !important; border:2px solid white">
+                          <ol class="carousel-indicators">
+                          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                          {% for f in range(1,file_path|length) %}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{ f }}"
+                            ></li>
+                          {% endfor %}
+                            <!-- <li data-target="#carousel-example-generic" data-slide-to="1"></li> -->
+                          </ol>
+                          <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                               <img class='img-responsive' style="width: 100%; height: auto;"  
+                               src="{{ url_for('static', filename=file_path[0]) }}">
+                            </div>
+                            {% for f in file_path[1:] %}
+                          
+                            <div class="carousel-item">
+                               <img class='img-responsive' style="width: 100%; height: auto;"  
+                               src="{{ url_for('static', filename=f) }}">
+                            
+                            </div>
+                            {% endfor %}
+                            
+                          <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+               
+                          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {% if note_msg %}
+          <div style="color:white !important;" class="col-lg-7 text-center">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                {{ note_msg }}
+              </div>
+              {% if tweet %}
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                <a id="tweetbtn" value="tweetbtn" name="sharetweet" class="btn btn-primary text-uppercase" href='https://twitter.com/intent/tweet?text="{{ tweet }}">Tweet</a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          {% else %}
+          <div class="col-lg-7">
+            <form method="POST" id="noteForm" name="sentMessage" novalidate>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group" style="margin-top:5px;">
+                    <input class="form-control" name="title" id="title" type="text" placeholder="Note Title" value="{{ notetitle }}"
+                    required data-validation-required-message="Please enter a title.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea class="form-control" name="content" id="content" required data-validation-required-message="Please enter content."
+                    >{{ output_print }}</textarea>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                  <div id="success"></div>
+                  <div class="btn-group">
+                    <button id="createnote" value="createnote" name="btn" class="btn btn-primary text-uppercase" type="submit">Create everNote</button>
+                    <a id="tweetbtn" value="tweetbtn" name="sharetweet" class="btn btn-primary text-uppercase" 
+                    href='https://twitter.com/intent/tweet?text="{{ output_print }} via"&url=http://test.shaham.me'>Tweet</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Shaham.me 2018</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="https://twitter.com/shahamfarooq" target="_blank">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="http://shaham.me/" target="_blank">
+                  <i class="fa fa-user"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="https://medium.com/@shahamfarooq/digi-lighter-digitize-your-highlights-5fa905d0b4f4">Writeup</a>
+              </li>
+             <!--  <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loadingoverlay.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.bcSwipe.js') }}"></script>
+    <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Contact form JavaScript -->
+    <!-- <script src="{{ url_for('static', filename='js/jqBootstrapValidation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contact_me.js') }}"></script> -->
+
+
+    <!-- Custom scripts for this template -->
+    <script src="{{ url_for('static', filename='js/agency.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/imgupload.js') }}"></script>
+
+        <script>
+    function showLoad() {
+      $.LoadingOverlay("show");
+    };
+
+    // $('.carousel').carousel(
+    //     interval: 2000
+    //   );
+
+    $('.carousel').bcSwipe({ threshold: 50 });
+    </script>
+
+
+    <script>
+       function preview_images() 
+        {
+         var total_file=document.getElementById("images").files.length;
+         for(var i=0;i<total_file;i++)
+         {
+          $('#image_preview').append("<div class='col-md-3'><img class='img-responsive' style='width: 200px; height: 150px;' src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
+          $('#image_preview').show()
+         }
+        };
+
+        $('.imageupload').imageupload({
+            allowedFormats: [ 'jpg', 'png', 'jpeg' ],
+            maxFileSizeKb: 16000
+        });
+  </script>
+
+  {% if scroll %}
+  <script>
+      var target = $('#' + '{{ scroll }}');
+      $('html, body').animate({
+        scrollTop: (target.offset().top - 35)
+      }, 1000, "easeInOutExpo");
+      // document.getElementById('{{ scroll }}').scrollIntoView();
+      // document.location.hash = '#' + '{{ scroll }}';
+  </script>
+  {% endif %}
+
+  </body>
+
+</html>
